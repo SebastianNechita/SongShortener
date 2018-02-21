@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+
+<GridPane alignment="center" hgap="10" prefHeight="598.0" prefWidth="696.0" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="624.0" prefWidth="895.0">
+         <children>
+            <VBox prefHeight="662.0" prefWidth="809.0">
+               <children>
+                  <HBox prefHeight="638.0" prefWidth="809.0">
+                     <children>
+                        <ListView fx:id="listView" prefHeight="363.0" prefWidth="98.0" />
+                        <TextArea fx:id="inputTextArea" prefHeight="600.0" prefWidth="338.0" promptText="Input Text" />
+                        <TextArea fx:id="outputTextArea" prefHeight="600.0" prefWidth="370.0" promptText="Output Text" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="label" alignment="CENTER" prefHeight="67.0" prefWidth="577.0" text="Insert the text and than give an order of the verses :)" />
+                        <Button fx:id="button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="62.0" prefWidth="232.0" text="Clear list" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
