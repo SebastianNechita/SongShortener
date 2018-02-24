@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
@@ -33,6 +30,15 @@ public class Controller {
 
     @FXML
     private Label label;
+
+    @FXML
+    private RadioButton radio2;
+
+    @FXML
+    private ToggleGroup oddRadioGroup;
+
+    @FXML
+    private RadioButton radio3;
 
     @FXML
     private Button button;
@@ -87,9 +93,13 @@ public class Controller {
                     for(int i = 0 ; i < lines.size() ; i++){
                         String text = "---[Verse:" + (++nr) + "]---\n";
                         text += lines.get(i) + "\n";
-                        i++;
-                        if(i < lines.size()){
-                            text += lines.get(i) + "\n";
+                        if(i + 1 < lines.size()){
+                            text += lines.get(i + 1) + "\n";
+                            i++;
+                            if(radio3.isSelected() && i + 1 == lines.size() - 1){
+                                text += lines.get(i + 1) + "\n";
+                                i++;
+                            }
                         }
                         outputTextArea.appendText(text);
                     }
@@ -133,6 +143,8 @@ public class Controller {
                 label.setText("Order:");
             }
         });
+        radio2.setOnMouseClicked(p->{updateOutput();});
+        radio3.setOnMouseClicked(p->{updateOutput();});
     }
 
 
