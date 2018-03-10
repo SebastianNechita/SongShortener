@@ -2,27 +2,27 @@ package sample;
 
 import java.util.List;
 
-public class Verse {
-    int id = -1;
-    List<String> lines;
+class Verse {
+    private int id = -1;
+    private List<String> lines;
 
-    public Verse(List<String> lines) {
+    Verse(List<String> lines) {
         this.lines = lines;
     }
 
-    public void addLine(String s){
+    void addLine(String s) {
         lines.add(s);
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
-    public List<String> getLines() {
+    List<String> getLines() {
         return lines;
     }
 
@@ -32,10 +32,10 @@ public class Verse {
 
     @Override
     public String toString() {
-        String s = "";
-        for(String s2 : lines){
-            s += s2 + "\n";
+        StringBuilder s = new StringBuilder();
+        for (String s2 : lines) {
+            s.append(s2).append("\n");
         }
-        return s;
+        return s.toString();
     }
 }

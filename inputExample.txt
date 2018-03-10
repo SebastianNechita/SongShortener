@@ -1,0 +1,20 @@
+---[Verse:1]---
+acesta este
+versul numarul 1
+si este un vers f fain
+trebe sa recunosti
+---[Verse:2]---
+versul al 2-lea
+si asta e un vers fain
+toata poezia e faina
+---[Verse:3]---
+acesta este
+versul numarul 3
+si este un vers f fain
+trebe sa recunosti
+---[Verse:4]---
+versul al 4-lea
+si asta e un vers fain
+toata poezia e faina
+bla bla bla
+si bla bla bla
