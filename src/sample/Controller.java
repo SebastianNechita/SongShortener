@@ -36,6 +36,16 @@ public class Controller {
     @FXML
     private Button button;
 
+    @FXML
+    private ChoiceBox<String> choiceBoxFormat;
+
+    @FXML
+    private TextField textFieldTitlu;
+
+    @FXML
+    private Label labelTitlu;
+
+
     private void processText() {
         verses = new HashMap<>();
         String text = inputTextArea.getText();
@@ -86,29 +96,59 @@ public class Controller {
     }
 
     private void updateOutput() {
-        outputTextArea.setText("");
-        int nr = 0;
-        for (Integer id : order) {
-            Verse verse = verses.get(id);
-            List<String> lines = verse.getLines();
-            int i = 0;
-            while (i < lines.size()) {
-                StringBuilder text = new StringBuilder();
-                text.append("---[Verse:")
-                        .append(++nr).append("]---\n")
-                        .append(lines.get(i))
-                        .append("\n");
-                if (i + 1 < lines.size()) {
-                    text.append(lines.get(i + 1)).append("\n");
-                    i++;
-                    if (radio3.isSelected() && i + 1 == lines.size() - 1) {
+
+        if (this.choiceBoxFormat.getValue().equals("OpenLp")) {
+            outputTextArea.setText("");
+            int nr = 0;
+            for (Integer id : order) {
+                Verse verse = verses.get(id);
+                List<String> lines = verse.getLines();
+                int i = 0;
+                while (i < lines.size()) {
+                    StringBuilder text = new StringBuilder();
+                    text.append("---[Verse:")
+                            .append(++nr).append("]---\n")
+                            .append(lines.get(i))
+                            .append("\n");
+                    if (i + 1 < lines.size()) {
                         text.append(lines.get(i + 1)).append("\n");
                         i++;
+                        if (radio3.isSelected() && i + 1 == lines.size() - 1) {
+                            text.append(lines.get(i + 1)).append("\n");
+                            i++;
+                        }
                     }
+                    outputTextArea.appendText(text.toString());
+                    i++;
                 }
-                outputTextArea.appendText(text.toString());
-                i++;
             }
+        } else if (this.choiceBoxFormat.getValue().equals("ProPresenter")) {
+
+            outputTextArea.setText("Title: " + this.textFieldTitlu.getText()+ "\n\n");
+
+            int nr = 0;
+            for (Integer id : order) {
+                Verse verse = verses.get(id);
+                List<String> lines = verse.getLines();
+                int i = 0;
+                while (i < lines.size()) {
+                    StringBuilder text = new StringBuilder();
+                    text.append(lines.get(i))
+                            .append("\n");
+                    if (i + 1 < lines.size()) {
+                        text.append(lines.get(i + 1)).append("\n\n");
+                        i++;
+                        if (radio3.isSelected() && i + 1 == lines.size() - 1) {
+                            text.append(lines.get(i + 1)).append("\n\n");
+                            i++;
+                        }
+                    }
+                    outputTextArea.appendText(text.toString());
+                    i++;
+                }
+            }
+
+
         }
     }
 
@@ -140,6 +180,32 @@ public class Controller {
         });
         radio2.setOnMouseClicked(p -> updateOutput());
         radio3.setOnMouseClicked(p -> updateOutput());
+        radio2.setSelected(true);
+
+        ObservableList<String> choices = FXCollections.observableArrayList(new ArrayList<String>());
+
+        choices.add("OpenLp");
+        choices.add("ProPresenter");
+
+        this.choiceBoxFormat.setItems(choices);
+        this.choiceBoxFormat.setValue("OpenLp");
+
+        this.labelTitlu.setVisible(false);
+        this.textFieldTitlu.setVisible(false);
+
+    }
+
+    @FXML
+    public void checkIfProPresenterChosen(){
+
+        if (this.choiceBoxFormat.getValue().equals("OpenLp")){
+            this.labelTitlu.setVisible(false);
+            this.textFieldTitlu.setVisible(false);
+        } else if (this.choiceBoxFormat.getValue().equals("ProPresenter")){
+            this.labelTitlu.setVisible(true);
+            this.textFieldTitlu.setVisible(true);
+        }
+
     }
 
 
